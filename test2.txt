@@ -1,0 +1,24 @@
+# 简单线性回归示例：生成数据、拟合、绘图并保存结果。
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 生成数据
+np.random.seed(0)
+x = np.linspace(0, 10, 50)
+y = 2.0 * x + 1.0 + np.random.normal(scale=2.0, size=x.shape)
+
+# 拟合一次多项式（线性回归）
+slope, intercept = np.polyfit(x, y, 1)
+print(f"slope={slope:.4f}, intercept={intercept:.4f}")
+
+# 预测并绘图
+y_pred = slope * x + intercept
+plt.scatter(x, y, label="data")
+plt.plot(x, y_pred, color="orange", label=f"fit: y={slope:.2f}x+{intercept:.2f}")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.legend()
+plt.tight_layout()
+plt.savefig("linear_regression.png", dpi=150)
+print("Plot saved to linear_regression.png")print("第一次")：
